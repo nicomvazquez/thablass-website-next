@@ -1,5 +1,7 @@
 import React from "react";
 
+import ProductCard from '@/components/ProductCard'
+
 async function loadingPosts() {
   const res = await fetch("https://jsonplaceholder.typicode.com/photos/");
   const data = await res.json();
@@ -16,12 +18,9 @@ async function page() {
   return (
     <main>
       <section>
-        <div>
+        <div className="flex justify-between flex-wrap">
           {posts.map((i) => (
-            <div>
-              <img src={i.url} alt={i.title} />
-              <p>{i.title}</p>
-            </div>
+            <ProductCard props={i} />
           ))}
         </div>
       </section>

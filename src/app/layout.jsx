@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
+
 import Navbar from "@/components/Navbar";
+import Foother from "@/components/Foother";
 
 import "./globals.css";
 
@@ -20,6 +22,7 @@ export default function RootLayout({ children }) {
           <h1>The blass store</h1>
         </section>
         {children}
+        <Foother />
       </body>
     </html>
   );
