@@ -1,16 +1,11 @@
 import React from "react";
+import { prisma } from "@/libs/prisma";
 
-import ProductCard from '@/components/ProductCard'
+import ProductCard from "@/components/ProductCard";
 
 async function loadingPosts() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/photos/");
-  const data = await res.json();
-  const posts = data.slice(0, 15);
-
-  await new Promise(resolve => setTimeout(resolve, 2000))
-
-  console.log(data);
-  return posts;
+  const res = await prisma.product.findMany();
+  return res;
 }
 
 async function page() {

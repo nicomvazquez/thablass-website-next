@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Navbar />
 
-        <section>
+        <section className="bg-neutral-600 h-96">
           <h1>The blass store</h1>
         </section>
         {children}
