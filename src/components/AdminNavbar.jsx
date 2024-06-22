@@ -7,7 +7,7 @@ function AdminNavbar() {
       <div className="flex justify-between max-w-4xl">
         <Link href={"/admin"}>productos</Link>
         <Link href={"/admin/new"}>añadir producto</Link>
-        <Link href={""}>categorias</Link>
+        <Link href={"/admin/category"}>categorias</Link>
       </div>
     </div>
   );

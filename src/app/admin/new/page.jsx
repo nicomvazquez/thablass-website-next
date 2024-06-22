@@ -1,9 +1,21 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 function page() {
+  const [categorys, setCategorys] = useState([]);
+
+  useEffect(() => {
+    const load = async () => {
+      const res = await fetch("/api/category");
+      const data = await res.json();
+      console.log(data);
+      setCategorys(data);
+    };
+    load();
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -17,12 +29,12 @@ function page() {
       <form
         onSubmit={handleSubmit(async (data) => {
           const formdata = new FormData();
-          formdata.append("nombre", data.nombre);
+          formdata.append("name", data.name);
           formdata.append("description", data.description);
           formdata.append("price", data.price);
           formdata.append("img", data.img[0]);
           formdata.append("stock", data.stock);
-          formdata.append("categorie", data.categorie);
+          formdata.append("category", data.category);
 
           const res = await fetch("/api/products", {
             method: "POST",
@@ -33,7 +45,7 @@ function page() {
       >
         <input
           type="text"
-          {...register("nombre", { required: "campo obligatorio" })}
+          {...register("name", { required: "campo obligatorio" })}
         />
 
         <input
@@ -55,10 +67,16 @@ function page() {
           {...register("stock", { required: "campo obligatorio" })}
         />
 
-        <input
+        <select
           type="text"
-          {...register("categorie", { required: "campo obligatorio" })}
-        />
+          {...register("category", { required: "campo obligatorio" })}
+        >
+          {categorys.map((category) => (
+            <option key={category.id} value={category.name}>
+              {category.name}
+            </option>
+          ))}
+        </select>
 
         <input type="submit" />
       </form>

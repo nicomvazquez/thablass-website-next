@@ -11,15 +11,13 @@ async function loadingPosts() {
 async function page() {
   const posts = await loadingPosts();
   return (
-    <main>
-      <section>
-        <div className="flex justify-between flex-wrap">
-          {posts.map((i) => (
-            <ProductCard props={i} />
-          ))}
-        </div>
-      </section>
-    </main>
+    <section>
+      <div className="flex justify-between flex-wrap">
+        {posts.map((i) => (
+          <ProductCard props={i} />
+        ))}
+      </div>
+    </section>
   );
 }
 

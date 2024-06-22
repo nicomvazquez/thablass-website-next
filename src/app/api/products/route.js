@@ -30,11 +30,11 @@ export async function POST(request) {
   });
 
   const data = {
-    nombre: req.get("nombre"),
+    name: req.get("name"),
     description: req.get("description"),
     price: Number(req.get("price")),
     stock: Number(req.get("stock")),
-    categorie: req.get("categorie"),
+    category: req.get("category"),
     img: urlres.url,
   };
 
